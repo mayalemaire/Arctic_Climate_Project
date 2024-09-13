@@ -33,6 +33,8 @@ List of the supplementary materials provided:
 - 11_WW_gridded_t2m.R - R script for detecting winter warming events
 - 12_t2m_press_aggregation.R - R script for aggregating temperature to winter seasons data
 - 13_WW_intensity_plot.R - R script to produce figures 2 & 3 as linear regressions
+- 14_Adapted_polar_map.R - R script to produce Supplementary Figure 1
+
 
 *Raw data files:*
 - evidence-map-scope - shapefile of the Arctic regions as established by Martin et al., 2022

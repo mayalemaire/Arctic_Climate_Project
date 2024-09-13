@@ -40,6 +40,7 @@ List of the supplementary materials provided:
 - evidence-map-scope - shapefile of the Arctic regions as established by Martin et al., 2022
 - ne_10m_ocean - shapefile of the Ocean used to filter out data points in the Ocean
 - ne_10m_coastline - shapefile of coastlines to add onto maps
+- ne_10d_graticule - shapefile of 10 degrees graticule for plotting
 - All ERA5 data used is available online at https://cds.climate.copernicus.eu/cdsapp#!/home
 
 Thank you for your time!

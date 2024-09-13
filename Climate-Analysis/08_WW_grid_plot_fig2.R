@@ -12,6 +12,8 @@ library(raster)
 library(sp)
 library(ggspatial)
 library(terra)
+library(geosphere)
+library(vegan)
 
 # Read the shapefile for the Arctic
 arctic_shape <- st_read("Arctic_Climate_Project/data/evidence-map-scope/evidence-map-scope.shp")
@@ -263,20 +265,19 @@ svalbard_bbox <- st_transform(svalbard_bbox, st_crs(change_layer))
 yamal_bbox <- st_as_sfc(yamal_bbox)
 yamal_bbox <- st_transform(yamal_bbox, st_crs(change_layer))
 
-# Define color palette and breaks
-color_palette <- brewer.pal(9, "RdBu")
-continuous_palette <- colorRampPalette(color_palette)
+# Define a custom color palette with specific colors
+custom_palette <- c("#3c546a", "#6B96B9", "#6596c1", "#b1cce1", "#e2f4fd", "#ec9172", "#de543e", "#ad2d24", "#5e1412")
 
-# Reverse the color palette
-continuous_palette_reversed <- function(n) rev(continuous_palette(n))
+# Create a continuous palette function using your custom colors
+continuous_palette <- colorRampPalette(custom_palette)
 breaks <- c(-Inf, -16, -8, -4, -2, 0, 2, 4, 8, 16, Inf)
 
 # Generate a color map that matches the breaks
 num_colors <- length(breaks) - 1
-colors <- continuous_palette_reversed(num_colors)
+colors <- continuous_palette(num_colors)
 
 # Plot change_layer with reversed color scale and customized legend labels
-plot(change_layer, col = continuous_palette_reversed(100), breaks = breaks)
+plot(change_layer, col = continuous_palette(100), breaks = breaks)
 plot(arctic_inverse, col = "gray", border = NA, add = TRUE)
 plot(coastline_mapping, add = TRUE, col = "black", lwd = 0.5)
 plot(graticule, add = TRUE, col = "black", lwd = 0.5)
@@ -289,25 +290,25 @@ plot(yamal_bbox, col = alpha("grey", 0.3), border = "black", lwd = 2, lty = "das
 gg_change_alaska <- ggplot() +
   geom_tile(data = subset(alaska_change, Absolute_diff <= -2), 
             aes(x = lon, y = lat), 
-            fill = "#d8e6f0", width = 1, height = 1) +
+            fill = "#b8d3e5", width = 1, height = 1) +
   geom_tile(data = subset(alaska_change, Absolute_diff > -2 & Absolute_diff <= 0), 
             aes(x = lon, y = lat), 
-            fill = "#f5f6f6", width = 1, height = 1) +
+            fill = "#dff3fb", width = 1, height = 1) +
   geom_tile(data = subset(alaska_change, Absolute_diff > 0 & Absolute_diff <= 2), 
             aes(x = lon, y = lat), 
-            fill = "#f6e2d4", width = 1, height = 1) +
+            fill = "#e9a792", width = 1, height = 1) +
   geom_tile(data = subset(alaska_change, Absolute_diff > 2 & Absolute_diff <= 4), 
             aes(x = lon, y = lat), 
-            fill = "#eebda3", width = 1, height = 1) +
+            fill = "#e36c54", width = 1, height = 1) +
   geom_tile(data = subset(alaska_change, Absolute_diff > 4 & Absolute_diff <= 8), 
             aes(x = lon, y = lat), 
-            fill = "#db8e73", width = 1, height = 1) +
+            fill = "#cb4435", width = 1, height = 1) +
   geom_tile(data = subset(alaska_change, Absolute_diff > 8 & Absolute_diff <= 16), 
             aes(x = lon, y = lat), 
-            fill = "#c05a4d", width = 1, height = 1) +
+            fill = "#9e2820", width = 1, height = 1) +
   geom_tile(data = subset(alaska_change, Absolute_diff > 16), 
             aes(x = lon, y = lat), 
-            fill = "#a32a31", width = 1, height = 1) +
+            fill = "#5f1412", width = 1, height = 1) +
   geom_sf(data = alaska_coastline, fill = "transparent", color = "black") +
   theme_minimal() +
   theme(
@@ -327,25 +328,25 @@ plot(gg_change_alaska)
 gg_change_northern_fennoscandia <- ggplot() +
   geom_tile(data = subset(northern_fennoscandia_change, Absolute_diff <= -2), 
             aes(x = lon, y = lat), 
-            fill = "#d8e6f0", width = 1, height = 1) +
+            fill = "#b8d3e5", width = 1, height = 1) +
   geom_tile(data = subset(northern_fennoscandia_change, Absolute_diff > -2 & Absolute_diff <= 0), 
             aes(x = lon, y = lat), 
-            fill = "#f5f6f6", width = 1, height = 1) +
+            fill = "#dff3fb", width = 1, height = 1) +
   geom_tile(data = subset(northern_fennoscandia_change, Absolute_diff > 0 & Absolute_diff <= 2), 
             aes(x = lon, y = lat), 
-            fill = "#f6e2d4", width = 1, height = 1) +
+            fill = "#e9a792", width = 1, height = 1) +
   geom_tile(data = subset(northern_fennoscandia_change, Absolute_diff > 2 & Absolute_diff <= 4), 
             aes(x = lon, y = lat), 
-            fill = "#eebda3", width = 1, height = 1) +
+            fill = "#e36c54", width = 1, height = 1) +
   geom_tile(data = subset(northern_fennoscandia_change, Absolute_diff > 4 & Absolute_diff <= 8), 
             aes(x = lon, y = lat), 
-            fill = "#db8e73", width = 1, height = 1) +
+            fill = "#cb4435", width = 1, height = 1) +
   geom_tile(data = subset(northern_fennoscandia_change, Absolute_diff > 8 & Absolute_diff <= 16), 
             aes(x = lon, y = lat), 
-            fill = "#c05a4d", width = 1, height = 1) +
+            fill = "#9e2820", width = 1, height = 1) +
   geom_tile(data = subset(northern_fennoscandia_change, Absolute_diff > 16), 
             aes(x = lon, y = lat), 
-            fill = "#a32a31", width = 1, height = 1) +
+            fill = "#5f1412", width = 1, height = 1) +
   geom_sf(data = northern_fennoscandia_coastline, fill = "transparent", color = "black") +
   theme_minimal() +
   theme(
@@ -365,25 +366,25 @@ plot(gg_change_northern_fennoscandia)
 gg_change_svalbard <- ggplot() +
   geom_tile(data = subset(svalbard_change, Absolute_diff <= -2), 
             aes(x = lon, y = lat), 
-            fill = "#d8e6f0", width = 1, height = 1) +
+            fill = "#b8d3e5", width = 1, height = 1) +
   geom_tile(data = subset(svalbard_change, Absolute_diff > -2 & Absolute_diff <= 0), 
             aes(x = lon, y = lat), 
-            fill = "#f5f6f6", width = 1, height = 1) +
+            fill = "#dff3fb", width = 1, height = 1) +
   geom_tile(data = subset(svalbard_change, Absolute_diff > 0 & Absolute_diff <= 2), 
             aes(x = lon, y = lat), 
-            fill = "#f6e2d4", width = 1, height = 1) +
+            fill = "#e9a792", width = 1, height = 1) +
   geom_tile(data = subset(svalbard_change, Absolute_diff > 2 & Absolute_diff <= 4), 
             aes(x = lon, y = lat), 
-            fill = "#eebda3", width = 1, height = 1) +
+            fill = "#e36c54", width = 1, height = 1) +
   geom_tile(data = subset(svalbard_change, Absolute_diff > 4 & Absolute_diff <= 8), 
             aes(x = lon, y = lat), 
-            fill = "#db8e73", width = 1, height = 1) +
+            fill = "#cb4435", width = 1, height = 1) +
   geom_tile(data = subset(svalbard_change, Absolute_diff > 8 & Absolute_diff <= 16), 
             aes(x = lon, y = lat), 
-            fill = "#c05a4d", width = 1, height = 1) +
+            fill = "#9e2820", width = 1, height = 1) +
   geom_tile(data = subset(svalbard_change, Absolute_diff > 16), 
             aes(x = lon, y = lat), 
-            fill = "#a32a31", width = 1, height = 1) +
+            fill = "#5f1412", width = 1, height = 1) +
   geom_sf(data = svalbard_coastline, fill = "transparent", color = "black") +
   theme_minimal() +
   theme(
@@ -403,25 +404,25 @@ plot(gg_change_svalbard)
 gg_change_yamal <- ggplot() +
   geom_tile(data = subset(yamal_change, Absolute_diff <= -2), 
             aes(x = lon, y = lat), 
-            fill = "#d8e6f0", width = 1, height = 1) +
+            fill = "#b8d3e5", width = 1, height = 1) +
   geom_tile(data = subset(yamal_change, Absolute_diff > -2 & Absolute_diff <= 0), 
             aes(x = lon, y = lat), 
-            fill = "#f5f6f6", width = 1, height = 1) +
+            fill = "#dff3fb", width = 1, height = 1) +
   geom_tile(data = subset(yamal_change, Absolute_diff > 0 & Absolute_diff <= 2), 
             aes(x = lon, y = lat), 
-            fill = "#f6e2d4", width = 1, height = 1) +
+            fill = "#e9a792", width = 1, height = 1) +
   geom_tile(data = subset(yamal_change, Absolute_diff > 2 & Absolute_diff <= 4), 
             aes(x = lon, y = lat), 
-            fill = "#eebda3", width = 1, height = 1) +
+            fill = "#e36c54", width = 1, height = 1) +
   geom_tile(data = subset(yamal_change, Absolute_diff > 4 & Absolute_diff <= 8), 
             aes(x = lon, y = lat), 
-            fill = "#db8e73", width = 1, height = 1) +
+            fill = "#cb4435", width = 1, height = 1) +
   geom_tile(data = subset(yamal_change, Absolute_diff > 8 & Absolute_diff <= 16), 
             aes(x = lon, y = lat), 
-            fill = "#c05a4d", width = 1, height = 1) +
+            fill = "#9e2820", width = 1, height = 1) +
   geom_tile(data = subset(yamal_change, Absolute_diff > 16), 
             aes(x = lon, y = lat), 
-            fill = "#a32a31", width = 1, height = 1) +
+            fill = "#5f1412", width = 1, height = 1) +
   geom_sf(data = yamal_coastline, fill = "transparent", color = "black") +
   theme_minimal() +
   theme(
@@ -438,11 +439,6 @@ gg_change_yamal <- ggplot() +
 
 gg_change_yamal
 
-plot_name <- "Arctic_Climate_Project/output/iceland.jpg"
-ggsave(plot_name, plot = gg_change_iceland, width = 20, height = 7, units = "in", dpi = 300)
-
-write.csv(filtered_WW, "Arctic_Climate_Project/output/mantel_test/yearly_total_WW_df.csv", row.names = FALSE)
-
 ## MANTEL TEST
 
 coords <- WW_absolute_change[c("lon", "lat")]
@@ -451,7 +447,7 @@ spatial_dist <- distm(coords)
 # Compute distance matrix for WW and time
 WW_absolute_dist <- dist(WW_absolute_change$Absolute_diff)
 
-mantel_test_result <- mantel(WW_absolute_dist, spatial_dist, method = "pearson", permutations = 25)
+mantel_test_result <- mantel(WW_absolute_dist, spatial_dist, method = "pearson", permutations = 99)
 
 print(mantel_test_result)
 

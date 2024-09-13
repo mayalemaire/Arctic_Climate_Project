@@ -12,6 +12,8 @@ library(raster)
 library(sp)
 library(ggspatial)
 library(terra)
+library(geosphere)
+library(vegan)
 
 # Read the shapefile for the Arctic
 arctic_shape <- st_read("Arctic_Climate_Project/data/evidence-map-scope/evidence-map-scope.shp")
@@ -461,7 +463,7 @@ spatial_dist <- distm(coords)
 # Compute distance matrix for ROS and time
 ROS_absolute_dist <- dist(ROS_absolute_change$Absolute_diff)
 
-mantel_test_result <- mantel(ROS_absolute_dist, spatial_dist, method = "pearson", permutations = 25)
+mantel_test_result <- mantel(ROS_absolute_dist, spatial_dist, method = "pearson", permutations = 99)
 
 print(mantel_test_result)
 

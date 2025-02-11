@@ -23,7 +23,7 @@ List of the supplementary materials provided:
 - 01_nc_to_csv_t2m.R
 - 02_nc_to_csv_precipitation.R
 - 03_t2m_precip_merger.R - R script used to merge precipitation and temperature data
-- 04_ROS_df_1t2m_5mm. R - R script use to detect ROS events
+- 04_ROS_df_1t2m_3mm_m3d. R - R script use to detect ROS events
 - 05_ROS_grid_plot_fig4.R - R script to produce figure 4 and paired t-tests
 - 06_WW_0.99_percentile.R - R script used to determine 0.99 threshold for each grid cell
 - 07_WW_gridded_sum_t2m_exceedance.R - R script used to calculated annual cumulative winter warming exceedance
@@ -34,6 +34,7 @@ List of the supplementary materials provided:
 - 12_t2m_press_aggregation.R - R script for aggregating temperature to winter seasons data
 - 13_WW_intensity_plot.R - R script to produce figures 2 & 3 as linear regressions
 - 14_Adapted_polar_map.R - R script to produce Supplementary Figure 1
+- 15_meta&climate_plot - R script used to produce figure 7 which combines climate analysis & meta-analysis results
 
 
 *Raw data files:*

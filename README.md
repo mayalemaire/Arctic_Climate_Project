@@ -42,6 +42,8 @@ List of the supplementary materials provided:
 - ne_10m_ocean - shapefile of the Ocean used to filter out data points in the Ocean
 - ne_10m_coastline - shapefile of coastlines to add onto maps
 - ne_10d_graticule - shapefile of 10 degrees graticule for plotting
-- All ERA5 data used is available online at https://cds.climate.copernicus.eu/cdsapp#!/home
+- All ERA5 data used is available online in the Copernicus Climate Data Store
+
+Hersbach, H., Bell, B., Berrisford, P., Biavati, G., Horányi, A., Muñoz Sabater, J., Nicolas, J., Peubey, C., Radu, R., Rozum, I., Schepers, D., Simmons, A., Soci, C., Dee, D., Thépaut, J-N. (2023): ERA5 hourly data on single levels from 1940 to present. Copernicus Climate Change Service (C3S) Climate Data Store (CDS), DOI: 10.24381/cds.adbb2d47 (Accessed on 15/01/2024)
 
 Thank you for your time!

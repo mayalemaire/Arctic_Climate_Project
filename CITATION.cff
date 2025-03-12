@@ -1,0 +1,22 @@
+cff-version: 1.0.0
+message: "If you use this data or code, please cite it as below."
+authors:
+  - family-names: Lemaire
+    given-names: Maya
+    orcid: https://orcid.org/0009-0000-5634-7829
+  - family-names: Bokhorst
+    given-names: Stef
+    orcid: https://orcid.org/0000-0003-0184-1162
+  - family-names: Witheford
+    given-names: Alistair
+    orcid: https://orcid.org/0009-0008-5272-0823
+  - family-names: Macias-Fauria
+    given-names: Marc
+    orcid: https://orcid.org/0000-0002-8438-2223
+  - family-names: Salguero-Gomez
+    given-names: Roberto
+    orcid: https://orcid.org/0000-0002-6085-4433
+
+title: mayalemaire/Arctic_Climate_Project: First official release of dataset and analysis code
+version: v1.0.0
+date-released: 2025-03-12

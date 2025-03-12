@@ -4,6 +4,8 @@ This repository contains all the code used in the MBiol dissertation title "Tren
 
 List of the supplementary materials provided:
 
+- Supp2_Meta_Analysis_Screening_Data.xlsx - Excel file containing all the different stages of data extraction as well as guides with tab and variable descriptions.
+
 **Meta-Analysis**
 
 *R code files:*

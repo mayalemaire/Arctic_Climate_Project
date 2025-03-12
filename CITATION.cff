@@ -17,6 +17,8 @@ authors:
     given-names: Roberto
     orcid: https://orcid.org/0000-0002-6085-4433
 
-title: mayalemaire/Arctic_Climate_Project: First official release of dataset and analysis code
+title: "Increases in Arctic Extreme Climatic Events Are Linked to Negative Fitness Effects on the Local Biota"
+doi: 10.5281/zenodo.15011515
 version: v1.0.0
 date-released: 2025-03-12
+url: https://github.com/mayalemaire/Arctic_Climate_Project

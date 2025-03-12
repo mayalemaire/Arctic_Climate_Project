@@ -1,6 +1,8 @@
 **Trends-in-Extreme-Climate-Events-in-the-Arctic-and-Their-Ecological-Consequences**
 
-This repository contains all the code used in the MBiol dissertation title "Trends in Extreme Climate Events in the Arctic and Their Ecological Consequences".
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15011515.svg)](https://doi.org/10.5281/zenodo.15011515)
+
+This repository contains all the code used in the publication "Increases in Arctic Extreme Climatic Events Are Linked to Negative Fitness Effects on the Local Biota".
 
 List of the supplementary materials provided:
 
